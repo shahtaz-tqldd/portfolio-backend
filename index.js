@@ -34,6 +34,12 @@ async function run() {
             const result = await projectCollection.insertOne(project)
             res.send(result)
         })
+        app.delete('/projects/:name', async (req, res) => {
+            const name = req.params.name
+            const filter = {name:name}
+            const result = await projectCollection.deleteOne(filter)
+            res.send(result)
+        })
 
         // blogs
         app.post('/blogs', async (req, res) => {
